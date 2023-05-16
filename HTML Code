@@ -1,0 +1,77 @@
+<section>
+  <h2>Featured Projects</h2>
+  <div class="slideshow">
+    <div class="slide">
+      <img src="project1.jpg" alt="Project 1">
+      <h3>Project 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <div class="slide">
+      <img src="project2.jpg" alt="Project 2">
+      <h3>Project 2</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div class="slide">
+      <img src="project3.jpg" alt="Project 3">
+      <h3>Project 3</h3>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .slideshow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+  .slide {
+    display: none;
+    text-align: center;
+  }
+  .slide:first-child {
+    display: block;
+  }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  let slideIndex = 0;
+  showSlides();
+  
+  function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    slides[slideIndex-1].style.display = "block";  
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
+  }
+</script>
+<section>
+  <h2>Location</h2>
+  <div id="map"></div>
+</section>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+<script>
+  function initMap() {
+    let myLatLng = {lat: 37.7749, lng: -122.4194};
+    let map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: myLatLng
+    });
+    let marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'My Location'
+    });
+  }
+</script>
